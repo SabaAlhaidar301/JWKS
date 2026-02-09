@@ -8,7 +8,7 @@ router = APIRouter()
 
 @router.post("/auth")
 def auth(request: Request):
-    expired = "expired" in request.query_params
+    expired = request.query_params.get("expired", "").lower() == "true"
 
     if expired:
         key = get_expired_key()
