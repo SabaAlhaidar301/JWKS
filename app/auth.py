@@ -30,4 +30,7 @@ def auth(request: Request):
         headers={"kid": key.kid},
     )
 
-    return token
+   return {
+        "access_token": token,
+        "token_type": "Bearer"
+    }
